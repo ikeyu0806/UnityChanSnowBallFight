@@ -2413,6 +2413,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2567274574472463549}
   - component: {fileID: 2567274574479895209}
+  - component: {fileID: 2567274574472632414}
+  - component: {fileID: 2567274574472632415}
   m_Layer: 0
   m_Name: Utc_win_humanoid
   m_TagString: Untagged
@@ -2420,6 +2422,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &2567274574472632414
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567274574472632413}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 1, z: 0.05}
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!54 &2567274574472632415
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567274574472632413}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2567274574472632449
 GameObject:
   m_ObjectHideFlags: 0
@@ -4630,7 +4661,7 @@ Animator:
   m_GameObject: {fileID: 2567274574472632413}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 533371e7422b091489bd9f7e927cdc49, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1c60d1a6404c9453ba9213f9b8c7d184, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
