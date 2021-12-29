@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject mainCamera;
     Animator animator;
+    GameController gameController;
 
     float moveForce = 0.1f;
     float jumpForce = 5;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
     }
 
     // Update is called once per frame
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y < -5 && transform.position.y > -20)
         {
             Destroy(gameObject);
+            gameController.GameOver();
         }
 
     }
