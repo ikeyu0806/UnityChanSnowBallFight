@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject mainCamera;
+    private Vector3 offset;
+
     float moveForce = 0.1f;
     float jumpForce = 5;
 
@@ -51,18 +54,22 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(0f, 0f, moveForce);
+            mainCamera.transform.position += new Vector3(0f, 0f, moveForce);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             transform.Translate(0f, 0f, -moveForce);
+            mainCamera.transform.position += new Vector3(0f, 0f, -moveForce);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(-moveForce, 0f, 0f);
+            mainCamera.transform.position += new Vector3(-moveForce, 0f, 0f);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(moveForce, 0f, 0f);
+            mainCamera.transform.position += new Vector3(moveForce, 0f, 0f);
         }
     }
 
