@@ -5,12 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject mainCamera;
-    private Vector3 offset;
+    Animator animator;
 
     float moveForce = 0.1f;
     float jumpForce = 5;
-
-    Animator animator;
 
     bool isJump, isJumpWait;
     float jumpWaitTimer;
@@ -24,9 +22,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp("space"))
+        if (Input.GetKeyUp("space"))
         {
-            if(!isJump && !isJumpWait)
+            if (!isJump && !isJumpWait)
             {
                 animator.Play("Jump", 0, 0);
 
@@ -35,16 +33,21 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(isJumpWait)
+        if (isJumpWait)
         {
             jumpWaitTimer -= Time.deltaTime;
-            if(0 > jumpWaitTimer)
+            if (0 > jumpWaitTimer)
             {
                 GetComponent<Rigidbody>().velocity = transform.up * jumpForce;
 
                 isJumpWait = false;
                 isJump = true;
             }
+        }
+
+        if (transform.position.y < -5 && transform.position.y > -20)
+        {
+            Destroy(gameObject);
         }
 
     }
