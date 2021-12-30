@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        TurnOffTrigger();
     }
 
     // Update is called once per frame
@@ -63,28 +64,42 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
+            animator.SetBool("Run", true);
             transform.Translate(0f, 0f, moveForce);
             mainCamera.transform.position += new Vector3(0f, 0f, moveForce);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
+            animator.SetBool("Run", true);
             transform.Translate(0f, 0f, -moveForce);
             mainCamera.transform.position += new Vector3(0f, 0f, -moveForce);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            animator.SetBool("Run", true);
             transform.Translate(-moveForce, 0f, 0f);
             mainCamera.transform.position += new Vector3(-moveForce, 0f, 0f);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
+            animator.SetBool("Run", true);
             transform.Translate(moveForce, 0f, 0f);
             mainCamera.transform.position += new Vector3(moveForce, 0f, 0f);
+        }
+        else
+        {
+            animator.SetBool("Idle", true);
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         isJump = false;
+    }
+
+    public void TurnOffTrigger()
+    {
+        animator.SetBool("Run", false);
+        animator.SetBool("Jump", false);
     }
 }
