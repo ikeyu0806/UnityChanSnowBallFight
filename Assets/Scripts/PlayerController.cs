@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
                 isJumpWait = false;
                 isJump = true;
+                animator.SetBool("Idle", true);
             }
         }
 
