@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,9 +11,11 @@ public class PlayerController : MonoBehaviour
 
     float moveForce = 0.1f;
     float jumpForce = 5;
-
     bool isJump, isJumpWait;
     float jumpWaitTimer;
+
+    int playerHP = 100, maxPlayerHP = 100;
+    public Slider hpBar;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +53,7 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y < -5 && transform.position.y > -20)
         {
             Destroy(gameObject);
+            hpBar.value = 0;
             gameController.GameOver();
         }
 
