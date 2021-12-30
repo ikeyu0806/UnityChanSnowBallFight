@@ -65,27 +65,31 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
             animator.SetBool("Run", true);
-            transform.Translate(0f, 0f, moveForce);
+            transform.position += new Vector3(0f, 0f, moveForce);
             mainCamera.transform.position += new Vector3(0f, 0f, moveForce);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.localRotation = Quaternion.Euler(0, 90, 0);
+            animator.SetBool("Run", true);
+            transform.position += new Vector3(moveForce, 0f, 0f);
+            mainCamera.transform.position += new Vector3(moveForce, 0f, 0f);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
             animator.SetBool("Run", true);
-            transform.Translate(0f, 0f, -moveForce);
+            transform.position += new Vector3(0f, 0f, -moveForce);
             mainCamera.transform.position += new Vector3(0f, 0f, -moveForce);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            transform.localRotation = Quaternion.Euler(0, 270, 0);
             animator.SetBool("Run", true);
-            transform.Translate(-moveForce, 0f, 0f);
+            transform.position += new Vector3(-moveForce, 0f, 0f);
             mainCamera.transform.position += new Vector3(-moveForce, 0f, 0f);
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            animator.SetBool("Run", true);
-            transform.Translate(moveForce, 0f, 0f);
-            mainCamera.transform.position += new Vector3(moveForce, 0f, 0f);
         }
         else
         {
