@@ -9,17 +9,25 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     GameController gameController;
 
+    public GameObject bulletPrefab;
+
     float moveForce = 0.1f;
     float jumpForce = 5;
     bool isJump, isJumpWait;
     float jumpWaitTimer;
 
+    float shotHeight = 0.5f;
+    float shotRemoteRange = 0.5f;
+
     int playerHP = 100, maxPlayerHP = 100;
     public Slider hpBar;
+
+    public Transform shotPoint;
 
     // Start is called before the first frame update
     void Start()
     {
+        shotPoint.position = transform.position + new Vector3(0f, 0f, 10f);
         animator = GetComponent<Animator>();
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
         TurnOffTrigger();
@@ -58,6 +66,8 @@ public class PlayerController : MonoBehaviour
             hpBar.value = 0;
             gameController.GameOver();
         }
+
+        Shot();
     }
 
     private void FixedUpdate()
@@ -68,6 +78,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Run", true);
             transform.position += new Vector3(0f, 0f, moveForce);
             mainCamera.transform.position += new Vector3(0f, 0f, moveForce);
+            shotPoint.position = transform.position + new Vector3(0f, shotHeight, shotRemoteRange);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -75,6 +86,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Run", true);
             transform.position += new Vector3(moveForce, 0f, 0f);
             mainCamera.transform.position += new Vector3(moveForce, 0f, 0f);
+            shotPoint.position = transform.position + new Vector3(shotRemoteRange, shotHeight, 0f);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -82,6 +94,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Run", true);
             transform.position += new Vector3(0f, 0f, -moveForce);
             mainCamera.transform.position += new Vector3(0f, 0f, -moveForce);
+            shotPoint.position = transform.position + new Vector3(0f, shotHeight, -shotRemoteRange);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -89,6 +102,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Run", true);
             transform.position += new Vector3(-moveForce, 0f, 0f);
             mainCamera.transform.position += new Vector3(-moveForce, 0f, 0f);
+            shotPoint.position = transform.position + new Vector3(-shotRemoteRange, shotHeight, 0f);
         }
     }
 
@@ -101,5 +115,13 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetBool("Run", false);
         animator.SetBool("Jump", false);
+    }
+
+    void Shot()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
+        }
     }
 }
