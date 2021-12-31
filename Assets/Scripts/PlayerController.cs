@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     float shotHeight = 0.5f;
     float shotRemoteRange = 0.5f;
 
-    int playerHP = 100, maxPlayerHP = 100;
+    int playerHP = 100;
     public Slider hpBar;
 
     public Transform shotPoint;
@@ -62,9 +62,7 @@ public class PlayerController : MonoBehaviour
 
         if (transform.position.y < -5 && transform.position.y > -20)
         {
-            Destroy(gameObject);
-            hpBar.value = 0;
-            gameController.GameOver();
+            GameOver();
         }
 
         Shot();
@@ -123,5 +121,30 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
         }
+    }
+
+    public void TakeHit(float damage)
+    {
+        Debug.Log("TakeHit!");
+        playerHP = (int)Mathf.Clamp(playerHP - damage, 0, playerHP);
+
+        HPUpdate();
+
+        if (playerHP <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    public void HPUpdate()
+    {
+        hpBar.value = playerHP;
+    }
+
+    public void GameOver()
+    {
+        Destroy(gameObject);
+        hpBar.value = 0;
+        gameController.GameOver();
     }
 }

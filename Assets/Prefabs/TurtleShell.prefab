@@ -401,6 +401,7 @@ GameObject:
   - component: {fileID: 3435142142558683139}
   - component: {fileID: 1067939069164366457}
   - component: {fileID: 8098185738328867000}
+  - component: {fileID: 6447853321195974593}
   m_Layer: 0
   m_Name: TurtleShell
   m_TagString: Untagged
@@ -473,6 +474,18 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6447853321195974593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3385007083607114855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0a56d6ea8f7d4046804de32b7c2ae06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3385048340504354719
 GameObject:
   m_ObjectHideFlags: 0
