@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
             shotPoint.position = transform.position + new Vector3(0f, shotHeight, shotRemoteRange);
             playerDirection = Direction.Up;
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.localRotation = Quaternion.Euler(0, 90, 0);
             animator.SetBool("Run", true);
@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
             shotPoint.position = transform.position + new Vector3(shotRemoteRange, shotHeight, 0f);
             playerDirection = Direction.Right;
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
             transform.localRotation = Quaternion.Euler(0, 180, 0);
             animator.SetBool("Run", true);
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
             shotPoint.position = transform.position + new Vector3(0f, shotHeight, -shotRemoteRange);
             playerDirection = Direction.Down;
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.localRotation = Quaternion.Euler(0, 270, 0);
             animator.SetBool("Run", true);
@@ -109,6 +109,11 @@ public class PlayerController : MonoBehaviour
             mainCamera.transform.position += new Vector3(-moveForce, 0f, 0f);
             shotPoint.position = transform.position + new Vector3(-shotRemoteRange, shotHeight, 0f);
             playerDirection = Direction.Left;
+        }
+        else
+        {
+            animator.SetBool("Run", false);
+            animator.SetBool("Idle", true);
         }
     }
 
