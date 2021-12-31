@@ -16,34 +16,27 @@ public class PlayerBullet : MonoBehaviour
     {
         shotPoint = GameObject.FindWithTag("shotPoint");
         Player = GameObject.FindWithTag("Player");
-        //Debug.Log("XXX");
-        //Debug.Log(shotPoint.transform.position.z);
-        //Debug.Log(Player.transform.position.z);
-        //Debug.Log("ZZZ");
-        //Debug.Log(shotPoint.transform.position.x);
-        //Debug.Log(Player.transform.position.x);
-        if ((int)shotPoint.transform.position.z > (int)Player.transform.position.z)
+        switch (Player.GetComponent<PlayerController>().playerDirection)
         {
-            shotDirection = Direction.Up;
-        }
-        else if ((int)shotPoint.transform.position.z < (int)Player.transform.position.z)
-        {
-            shotDirection = Direction.Down;
-        }
-        else if ((int)shotPoint.transform.position.x > (int)Player.transform.position.x)
-        {
-            shotDirection = Direction.Right;
-        }
-        else if ((int)shotPoint.transform.position.x < (int)Player.transform.position.x)
-        {
-            shotDirection = Direction.Left;
+            case PlayerController.Direction.Up:
+                shotDirection = Direction.Up;
+                break;
+            case PlayerController.Direction.Down:
+                shotDirection = Direction.Down;
+                break;
+            case PlayerController.Direction.Right:
+                shotDirection = Direction.Right;
+                break;
+            case PlayerController.Direction.Left:
+                shotDirection = Direction.Left;
+                break;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch(shotDirection)
+        switch (shotDirection)
         {
             case Direction.Up:
                 transform.position += new Vector3(0, 0, shotSpeed) * Time.deltaTime;

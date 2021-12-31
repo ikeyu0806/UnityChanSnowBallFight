@@ -24,12 +24,16 @@ public class PlayerController : MonoBehaviour
 
     public Transform shotPoint;
 
+    public enum Direction { Up, Down, Right, Left };
+    public Direction playerDirection;
+
     // Start is called before the first frame update
     void Start()
     {
         shotPoint.position = transform.position + new Vector3(0f, 0f, 10f);
         animator = GetComponent<Animator>();
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        playerDirection = Direction.Up;
         TurnOffTrigger();
     }
 
@@ -77,6 +81,7 @@ public class PlayerController : MonoBehaviour
             transform.position += new Vector3(0f, 0f, moveForce);
             mainCamera.transform.position += new Vector3(0f, 0f, moveForce);
             shotPoint.position = transform.position + new Vector3(0f, shotHeight, shotRemoteRange);
+            playerDirection = Direction.Up;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -85,6 +90,7 @@ public class PlayerController : MonoBehaviour
             transform.position += new Vector3(moveForce, 0f, 0f);
             mainCamera.transform.position += new Vector3(moveForce, 0f, 0f);
             shotPoint.position = transform.position + new Vector3(shotRemoteRange, shotHeight, 0f);
+            playerDirection = Direction.Right;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -93,6 +99,7 @@ public class PlayerController : MonoBehaviour
             transform.position += new Vector3(0f, 0f, -moveForce);
             mainCamera.transform.position += new Vector3(0f, 0f, -moveForce);
             shotPoint.position = transform.position + new Vector3(0f, shotHeight, -shotRemoteRange);
+            playerDirection = Direction.Down;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -101,6 +108,7 @@ public class PlayerController : MonoBehaviour
             transform.position += new Vector3(-moveForce, 0f, 0f);
             mainCamera.transform.position += new Vector3(-moveForce, 0f, 0f);
             shotPoint.position = transform.position + new Vector3(-shotRemoteRange, shotHeight, 0f);
+            playerDirection = Direction.Left;
         }
     }
 
