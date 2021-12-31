@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     bool isJump, isJumpWait;
     float jumpWaitTimer;
 
-    float shotHeight = 0.5f;
+    float shotHeight = 1f;
     float shotRemoteRange = 0.5f;
 
     int playerHP = 100;

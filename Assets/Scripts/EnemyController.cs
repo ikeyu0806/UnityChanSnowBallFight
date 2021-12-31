@@ -7,10 +7,14 @@ public class EnemyController : MonoBehaviour
     GameObject Player;
     int attackDamage = 10;
     int enemyHP = 20;
+    int score = 100;
+
+    GameController gameController;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
         Player = GameObject.FindWithTag("Player");
     }
 
@@ -34,7 +38,7 @@ public class EnemyController : MonoBehaviour
 
         if (enemyHP <= 0)
         {
-            Destroy(gameObject);
+            Dead();
         }
     }
 
@@ -44,5 +48,11 @@ public class EnemyController : MonoBehaviour
         {
             DamagePlayer();
         }
+    }
+
+    public void Dead()
+    {
+        gameController.AddScore(score);
+        Destroy(gameObject);
     }
 }
