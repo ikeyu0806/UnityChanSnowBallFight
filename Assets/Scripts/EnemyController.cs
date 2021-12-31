@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     GameObject Player;
     int attackDamage = 10;
+    int enemyHP = 20;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,16 @@ public class EnemyController : MonoBehaviour
         if (Player != null)
         {
             Player.GetComponent<PlayerController>().TakeHit(attackDamage);
+        }
+    }
+
+    public void TakeHit(float damage)
+    {
+        enemyHP = (int)Mathf.Clamp(enemyHP - damage, 0, enemyHP);
+
+        if (enemyHP <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 

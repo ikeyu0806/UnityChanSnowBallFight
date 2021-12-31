@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     float shotSpeed = 10f;
+    int attackDamage = 10;
+
     GameObject shotPoint;
     GameObject Player;
     enum Direction { Up, Down, Right, Left };
@@ -55,6 +57,19 @@ public class PlayerBullet : MonoBehaviour
             case Direction.Left:
                 transform.position += new Vector3(-shotSpeed, 0, 0) * Time.deltaTime;
                 break;
+        }
+    }
+
+    public void DamageEnemy(Collision enemy)
+    {
+        enemy.gameObject.GetComponent<EnemyController>().TakeHit(attackDamage);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            DamageEnemy(collision);
         }
     }
 }

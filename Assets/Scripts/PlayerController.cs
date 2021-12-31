@@ -125,7 +125,6 @@ public class PlayerController : MonoBehaviour
 
     public void TakeHit(float damage)
     {
-        Debug.Log("TakeHit!");
         playerHP = (int)Mathf.Clamp(playerHP - damage, 0, playerHP);
 
         HPUpdate();
