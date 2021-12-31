@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
             hpBar.value = 0;
             gameController.GameOver();
         }
-
     }
 
     private void FixedUpdate()
@@ -90,10 +89,6 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Run", true);
             transform.position += new Vector3(-moveForce, 0f, 0f);
             mainCamera.transform.position += new Vector3(-moveForce, 0f, 0f);
-        }
-        else
-        {
-            animator.SetBool("Idle", true);
         }
     }
 
