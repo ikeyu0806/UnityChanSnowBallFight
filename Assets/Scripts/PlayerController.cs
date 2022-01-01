@@ -133,8 +133,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             animator.SetBool("Throw", true);
-            Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
+            Invoke(nameof(ShotSnow), 1f);
         }
+    }
+
+    void ShotSnow()
+    {
+        Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
     }
 
     public void TakeHit(float damage)
