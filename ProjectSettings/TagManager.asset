@@ -6,6 +6,7 @@ TagManager:
   tags:
   - shotPoint
   - Enemy
+  - BossEnemy
   layers:
   - Default
   - TransparentFX
