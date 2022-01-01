@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             GameOver();
         }
 
-        Shot();
+        Throw();
     }
 
     private void FixedUpdate()
@@ -128,10 +128,11 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Jump", false);
     }
 
-    void Shot()
+    void Throw()
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            animator.SetBool("Throw", true);
             Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
         }
     }
