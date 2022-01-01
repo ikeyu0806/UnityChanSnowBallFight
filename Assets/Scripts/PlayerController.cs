@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public enum Direction { Up, Down, Right, Left };
     public Direction playerDirection;
 
+    private float time;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,8 @@ public class PlayerController : MonoBehaviour
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
         playerDirection = Direction.Up;
         TurnOffTrigger();
+
+        time = 1.0f;
     }
 
     // Update is called once per frame
@@ -68,7 +72,7 @@ public class PlayerController : MonoBehaviour
         {
             GameOver();
         }
-
+        time += Time.deltaTime;
         Throw();
     }
 
@@ -130,10 +134,14 @@ public class PlayerController : MonoBehaviour
 
     void Throw()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (time >= 1.0f)
         {
-            animator.SetBool("Throw", true);
-            Invoke(nameof(ShotSnow), 1f);
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                animator.SetBool("Throw", true);
+                Invoke(nameof(ShotSnow), 1f);
+                time = 0.0f;
+            }
         }
     }
 
