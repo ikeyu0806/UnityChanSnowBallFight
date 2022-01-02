@@ -11,11 +11,13 @@ public class YukoBullet : MonoBehaviour
     GameObject YukoModel;
     enum Direction { Up, Down, Right, Left };
     Direction shotDirection;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         YukoModel = GameObject.Find("EnemyYuko");
+        animator = GetComponent<Animator>();
         switch (YukoModel.GetComponent<BossEnemy>().bossDirection)
         {
             case BossEnemy.Direction.Up:

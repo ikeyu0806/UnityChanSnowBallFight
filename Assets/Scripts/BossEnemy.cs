@@ -17,7 +17,8 @@ public class BossEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shotPoint.position = shotPoint.position + new Vector3(0f, shotHeight, -0.5f);
+        animator = GetComponent<Animator>();
+        shotPoint.position = shotPoint.position + new Vector3(-0.5f, shotHeight, -0.5f);
         time = 1.0f;
     }
 
@@ -32,7 +33,6 @@ public class BossEnemy : MonoBehaviour
     {
         if (time >= 1.0f)
         {
-            //animator.SetBool("Throw", true);
             Invoke(nameof(ShotSnow), 1f);
             time = 0.0f;
         }
@@ -40,6 +40,7 @@ public class BossEnemy : MonoBehaviour
 
     void ShotSnow()
     {
+        animator.SetBool("Throw", true);
         Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
     }
 }
