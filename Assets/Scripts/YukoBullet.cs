@@ -2,30 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour
+public class YukoBullet : MonoBehaviour
 {
     float shotSpeed = 10f;
     int attackDamage = 10;
 
     GameObject Player;
+    GameObject YukoModel;
     enum Direction { Up, Down, Right, Left };
     Direction shotDirection;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        Player = GameObject.FindWithTag("Player");
-        switch (Player.GetComponent<PlayerController>().playerDirection)
+        YukoModel = GameObject.Find("EnemyYuko");
+        switch (YukoModel.GetComponent<BossEnemy>().bossDirection)
         {
-            case PlayerController.Direction.Up:
+            case BossEnemy.Direction.Up:
                 shotDirection = Direction.Up;
                 break;
-            case PlayerController.Direction.Down:
+            case BossEnemy.Direction.Down:
                 shotDirection = Direction.Down;
                 break;
-            case PlayerController.Direction.Right:
+            case BossEnemy.Direction.Right:
                 shotDirection = Direction.Right;
                 break;
-            case PlayerController.Direction.Left:
+            case BossEnemy.Direction.Left:
                 shotDirection = Direction.Left;
                 break;
         }
@@ -53,12 +55,12 @@ public class PlayerBullet : MonoBehaviour
 
     public void DamageEnemy(Collision enemy)
     {
-        enemy.gameObject.GetComponent<EnemyController>().TakeHit(attackDamage);
+        enemy.gameObject.GetComponent<PlayerController>().TakeHit(attackDamage);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Player")
         {
             DamageEnemy(collision);
         }
