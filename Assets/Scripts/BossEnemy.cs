@@ -18,7 +18,7 @@ public class BossEnemy : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        shotPoint.position = shotPoint.position + new Vector3(-0.5f, shotHeight, -0.5f);
+        shotPoint.position = shotPoint.position + new Vector3(0, shotHeight, -3f);
         time = 1.0f;
     }
 
@@ -33,14 +33,21 @@ public class BossEnemy : MonoBehaviour
     {
         if (time >= 1.0f)
         {
-            Invoke(nameof(ShotSnow), 1f);
+            animator.SetBool("Throw", true);
+            Invoke(nameof(ShotSnow), 2f);
+            shotPoint.position = transform.position + new Vector3(0, shotHeight, -2f);
+            Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
             time = 0.0f;
+        }
+        else
+        {
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+            animator.SetBool("Idle", true);
         }
     }
 
     void ShotSnow()
     {
-        animator.SetBool("Throw", true);
-        Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
+        transform.position += new Vector3(0f, 0f, 0f);
     }
 }
