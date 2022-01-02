@@ -63,6 +63,7 @@ public class YukoBullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             DamageEnemy(collision);
+            Destroy(gameObject);
         }
     }
 }
