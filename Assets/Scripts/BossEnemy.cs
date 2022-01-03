@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BossEnemy : MonoBehaviour
 {
@@ -14,11 +15,19 @@ public class BossEnemy : MonoBehaviour
 
     float shotHeight = 1f;
 
+    public GameObject Player;
+    public Transform target;
+    private NavMeshAgent navMeshAgent;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         shotPoint.position = shotPoint.position + new Vector3(0, shotHeight, -3f);
+
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        target = Player.transform;
+
         time = 1.0f;
     }
 
@@ -27,6 +36,8 @@ public class BossEnemy : MonoBehaviour
     {
         time += Time.deltaTime;
         Throw();
+
+        navMeshAgent.SetDestination(target.position);
     }
 
     void Throw()
@@ -41,7 +52,7 @@ public class BossEnemy : MonoBehaviour
         }
         else
         {
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
+            //transform.localRotation = Quaternion.Euler(0, 180, 0);
             animator.SetBool("Idle", true);
         }
     }
