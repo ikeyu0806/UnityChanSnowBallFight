@@ -14,6 +14,7 @@ public class BossEnemy : MonoBehaviour
     public Direction bossDirection;
 
     float shotHeight = 1f;
+    public float throwTime;
 
     public GameObject Player;
     public Transform target;
@@ -42,7 +43,7 @@ public class BossEnemy : MonoBehaviour
 
     void Throw()
     {
-        if (time >= 1.0f)
+        if (time >= throwTime)
         {
             animator.SetBool("Throw", true);
             Invoke(nameof(ShotSnow), 2f);

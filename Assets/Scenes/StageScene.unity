@@ -5701,7 +5701,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7e752fbf4cf20400288d2dd0a5cf8815, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7310,6 +7310,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 120901065278945898, guid: 21b7d5c22461943e4a007218a3052eb3, type: 3}
   shotPoint: {fileID: 83386565}
   bossDirection: 1
+  throwTime: 3
   Player: {fileID: 2567274574472632413}
   target: {fileID: 0}
 --- !u!1 &1490837134071955289
@@ -18769,6 +18770,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 195557424434111057, guid: 89558373c23214d408e94a0f4ea73b3a, type: 3}
   shotPoint: {fileID: 2125127145}
   bossDirection: 1
+  throwTime: 5
   Player: {fileID: 2567274574472632413}
   target: {fileID: 0}
 --- !u!195 &5290215439008695128
