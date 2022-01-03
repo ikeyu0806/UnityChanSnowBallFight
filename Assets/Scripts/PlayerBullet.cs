@@ -49,6 +49,11 @@ public class PlayerBullet : MonoBehaviour
                 transform.position += new Vector3(-shotSpeed, 0, 0) * Time.deltaTime;
                 break;
         }
+
+        if (transform.position.x > 200 || transform.position.x < -200 || transform.position.z > 200 || transform.position.z < -200 || transform.position.y < 0.7)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void DamageEnemy(Collision enemy)

@@ -53,7 +53,7 @@ public class BossEnemy : MonoBehaviour
         else
         {
             //transform.localRotation = Quaternion.Euler(0, 180, 0);
-            animator.SetBool("Idle", true);
+            animator.SetBool("Run", true);
         }
     }
 
