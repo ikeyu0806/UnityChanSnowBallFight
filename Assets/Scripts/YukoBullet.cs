@@ -7,51 +7,29 @@ public class YukoBullet : MonoBehaviour
     float shotSpeed = 10f;
     int attackDamage = 10;
 
-    GameObject Player;
     GameObject YukoModel;
-    enum Direction { Up, Down, Right, Left };
-    Direction shotDirection;
-    Animator animator;
+    GameObject Player;
+
+    public Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         YukoModel = GameObject.Find("EnemyYuko");
-        animator = GetComponent<Animator>();
-        switch (YukoModel.GetComponent<BossEnemy>().bossDirection)
-        {
-            case BossEnemy.Direction.Up:
-                shotDirection = Direction.Up;
-                break;
-            case BossEnemy.Direction.Down:
-                shotDirection = Direction.Down;
-                break;
-            case BossEnemy.Direction.Right:
-                shotDirection = Direction.Right;
-                break;
-            case BossEnemy.Direction.Left:
-                shotDirection = Direction.Left;
-                break;
-        }
+        Player = GameObject.Find("Player");
+
+        transform.LookAt(Player.transform);
+
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (shotDirection)
+        rb.velocity = transform.forward * shotSpeed;
+        if (transform.position.x > 200 || transform.position.x < -200 || transform.position.z > 200 || transform.position.z < -200 || transform.position.y < 0.7)
         {
-            case Direction.Up:
-                transform.position += new Vector3(0, 0, shotSpeed) * Time.deltaTime;
-                break;
-            case Direction.Down:
-                transform.position += new Vector3(0, 0, -shotSpeed) * Time.deltaTime;
-                break;
-            case Direction.Right:
-                transform.position += new Vector3(shotSpeed, 0, 0) * Time.deltaTime;
-                break;
-            case Direction.Left:
-                transform.position += new Vector3(-shotSpeed, 0, 0) * Time.deltaTime;
-                break;
+            Destroy(gameObject);
         }
     }
 
