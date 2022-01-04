@@ -27,10 +27,6 @@ public class YukoBullet : MonoBehaviour
     void Update()
     {
         rb.velocity = transform.forward * shotSpeed;
-        if (transform.position.x > 200 || transform.position.x < -200 || transform.position.z > 200 || transform.position.z < -200 || transform.position.y < 0.7)
-        {
-            Destroy(gameObject);
-        }
     }
 
     public void DamageEnemy(Collision enemy)

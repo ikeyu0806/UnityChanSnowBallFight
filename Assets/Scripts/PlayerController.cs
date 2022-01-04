@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     float jumpWaitTimer;
 
     float shotHeight = 1f;
-    float shotRemoteRange = 0.5f;
+    float shotRemoteRange = 1f;
 
     int playerHP = 100;
     public Slider hpBar;
@@ -147,6 +147,7 @@ public class PlayerController : MonoBehaviour
 
     void ShotSnow()
     {
+        Debug.Log("!!!Shot!!!");
         Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
     }
 
