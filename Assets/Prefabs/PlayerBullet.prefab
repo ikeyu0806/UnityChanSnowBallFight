@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 330094803603586145}
   - component: {fileID: 31208616477662725}
   - component: {fileID: 7129124856727299681}
+  - component: {fileID: 5484135586379010102}
   m_Layer: 0
   m_Name: PlayerBullet
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0e2cf39a62b9f4f37949b3218afd21c7, type: 2}
+  - {fileID: 2100000, guid: 7b8ea6e41e51e4b3da9fe1974b946089, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,3 +109,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd8655333d604383aef9d8e85438bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &5484135586379010102
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6651164943801291611}
+  serializedVersion: 2
+  m_Mass: 0.001
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
