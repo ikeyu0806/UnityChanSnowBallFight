@@ -7204,10 +7204,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1490837134072243059}
   - component: {fileID: 1490837134079200643}
-  - component: {fileID: 1490837134071955286}
   - component: {fileID: 1490837134071955284}
   - component: {fileID: 1490837134071955288}
   - component: {fileID: 1490837134071955290}
+  - component: {fileID: 1490837134071955286}
   m_Layer: 0
   m_Name: EnemyMisaki
   m_TagString: BossEnemy
@@ -7247,8 +7247,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!65 &1490837134071955286
-BoxCollider:
+--- !u!136 &1490837134071955286
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7257,9 +7257,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3, y: 1, z: 0.05}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1490837134071955287
 GameObject:
   m_ObjectHideFlags: 0
@@ -18696,10 +18697,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5290215439008341876}
   - component: {fileID: 5290215439018225984}
-  - component: {fileID: 5290215439008695126}
   - component: {fileID: 5290215439008695125}
   - component: {fileID: 5290215439008695127}
   - component: {fileID: 5290215439008695128}
+  - component: {fileID: 5290215439008695126}
   m_Layer: 0
   m_Name: EnemyYuko
   m_TagString: BossEnemy
@@ -18723,8 +18724,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &5290215439008695126
-BoxCollider:
+--- !u!136 &5290215439008695126
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -18733,9 +18734,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3, y: 1, z: 0.05}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5290215439008695127
 MonoBehaviour:
   m_ObjectHideFlags: 0

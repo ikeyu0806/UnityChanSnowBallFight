@@ -67,9 +67,7 @@ public class PlayerBullet : MonoBehaviour
             DamageEnemy(collision);
             Destroy(gameObject);
         }
-
-
-        if (collision.gameObject.tag == "EnemyMisaki" || collision.gameObject.tag == "EnemyYuko")
+        if (collision.gameObject.tag == "BossEnemy")
         {
             gameController.AddScore(score);
         }

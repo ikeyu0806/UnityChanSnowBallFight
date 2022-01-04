@@ -36,9 +36,15 @@ public class BossEnemy : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        Throw();
-
-        navMeshAgent.SetDestination(target.position);
+        if (CanShotPlayer())
+        {
+            Throw();
+        }
+        else
+        {
+            animator.SetBool("Run", true);
+            navMeshAgent.SetDestination(target.position);
+        }
     }
 
     void Throw()
@@ -51,15 +57,25 @@ public class BossEnemy : MonoBehaviour
             Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
             time = 0.0f;
         }
-        else
-        {
-            //transform.localRotation = Quaternion.Euler(0, 180, 0);
-            animator.SetBool("Run", true);
-        }
     }
 
     void ShotSnow()
     {
         transform.position += new Vector3(0f, 0f, 0f);
+    }
+
+    float DistanceToPlayer()
+    {
+        return Vector3.Distance(target.position, transform.position);
+    }
+
+    bool CanShotPlayer()
+    {
+        if (DistanceToPlayer() < 10)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
