@@ -65,11 +65,12 @@ public class PlayerBullet : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             DamageEnemy(collision);
-            Destroy(gameObject);
         }
         if (collision.gameObject.tag == "BossEnemy")
         {
             gameController.AddScore(score);
         }
+
+        Destroy(gameObject);
     }
 }

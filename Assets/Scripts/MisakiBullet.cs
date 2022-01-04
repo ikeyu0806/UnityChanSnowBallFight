@@ -39,7 +39,7 @@ public class MisakiBullet : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             DamageEnemy(collision);
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 }
