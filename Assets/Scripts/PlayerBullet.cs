@@ -6,13 +6,17 @@ public class PlayerBullet : MonoBehaviour
 {
     float shotSpeed = 10f;
     int attackDamage = 10;
+    int score = 100;
 
     GameObject Player;
     enum Direction { Up, Down, Right, Left };
     Direction shotDirection;
 
+    GameController gameController;
+
     private void Start()
     {
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
         Player = GameObject.FindWithTag("Player");
         switch (Player.GetComponent<PlayerController>().playerDirection)
         {
@@ -62,6 +66,12 @@ public class PlayerBullet : MonoBehaviour
         {
             DamageEnemy(collision);
             Destroy(gameObject);
+        }
+
+
+        if (collision.gameObject.tag == "EnemyMisaki" || collision.gameObject.tag == "EnemyYuko")
+        {
+            gameController.AddScore(score);
         }
     }
 }
