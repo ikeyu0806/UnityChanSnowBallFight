@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public GameObject gameOverText;
+    public GameObject backToTitleButton;
     public Text scoreText;
     int score = 0;
 
@@ -13,6 +14,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         gameOverText.SetActive(false);
+        backToTitleButton.SetActive(false);
         scoreText.text = "SCORE" + score;
     }
 
@@ -25,6 +27,7 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         gameOverText.SetActive(true);
+        backToTitleButton.SetActive(true);
     }
 
     public void AddScore(int addScore)
