@@ -5328,6 +5328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverText: {fileID: 1680609888}
+  backToTitleButton: {fileID: 558960483}
   scoreText: {fileID: 982718016}
 --- !u!4 &658009967
 Transform:
