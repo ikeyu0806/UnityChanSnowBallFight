@@ -50,3 +50,4 @@ Thumbs.db
 #python bytecode cache, for some plugins.
 *.pyc
 Logs/*
+build.app/
