@@ -10,7 +10,7 @@ public class MisakiBullet : MonoBehaviour
     GameObject MisakiModel;
     GameObject Player;
 
-    public Rigidbody rb;
+    private float dist;
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +20,14 @@ public class MisakiBullet : MonoBehaviour
 
         transform.LookAt(Player.transform);
 
-        rb = GetComponent<Rigidbody>();
+        dist = Vector3.Distance(Player.transform.position, transform.position);
+        Debug.Log(dist);
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = transform.forward * shotSpeed;
+        transform.position += transform.forward * Time.deltaTime * shotSpeed;
     }
 
     public void DamageEnemy(Collision enemy)
