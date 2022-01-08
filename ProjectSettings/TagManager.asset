@@ -7,14 +7,15 @@ TagManager:
   - shotPoint
   - Enemy
   - BossEnemy
+  - Fire
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - EnemyBullet
   - Water
   - UI
-  - 
+  - EnemyCharactor
   - 
   - 
   - 

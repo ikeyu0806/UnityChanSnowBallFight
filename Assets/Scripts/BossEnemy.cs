@@ -53,7 +53,7 @@ public class BossEnemy : MonoBehaviour
         {
             animator.SetBool("Throw", true);
             Invoke(nameof(ShotSnow), 2f);
-            shotPoint.position = transform.position + new Vector3(0, shotHeight, -2f);
+            shotPoint.position = transform.position + new Vector3(0, shotHeight, 0);
             Instantiate(bulletPrefab, shotPoint.position, transform.rotation);
             time = 0.0f;
         }
